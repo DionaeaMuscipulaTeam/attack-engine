@@ -1,5 +1,5 @@
 # About attack-engine
-the attack-engine tool is a tool that collects data on the cibe site and generates attacks.
+the attack-engine tool is a tool that collect data and generates attacks.
 
 
 # Usage
@@ -25,4 +25,4 @@ attack-engine will :
 
 # Contributors
 
-I would like to take this opportunity to extend special thanks to  Mr Mhamed Chammem and Mr Mohamed Hamdi
+I would like to take this opportunity to extend special thanks to  Mr Mhamed Chammem and Mr Mohamed Hamdi for his contribution and help .

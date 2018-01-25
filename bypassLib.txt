@@ -1,0 +1,10 @@
+/wp-login.php
+/admin/index.php
+/login.php
+/wp-login.php
+/wp-connect
+/connect
+/connexion.php
+/sign-in.php
+/admin
+/panel-admin

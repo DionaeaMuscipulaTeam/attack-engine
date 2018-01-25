@@ -1,0 +1,26 @@
+#!/usr/bin/python
+import os
+
+
+
+def genrateReport():
+
+	if (os.path.exists('~/attack-engine1/outputFiles/FinalRapport.txt') == False):
+		os.system ('touch ~/attack-engine1/outputFiles/FinalRapport.txt')
+	os.system('cat ~/attack-engine1/outputFiles/bruteForceRepport.txt > FinalRapport.txt')
+	os.system('cat ~/attack-engine1/outputFiles/CMSmap_Repports > FinalRapport.txt')
+	os.system('cat ~/attack-engine1/outputFiles/serverGathring.txt > FinalRapport.txt')	
+	os.system('cat ~/attack-engine1/outputFiles/Sqlmap_Repports > FinalRapport.txt')
+	os.system('cat ~/attack-engine1/outputFiles/bypassRepport.txt > FinalRapport.txt')
+	os.system('cat ~/attack-engine1/outputFiles/dataGathring.txt > FinalRapport.txt')
+	os.system('cat ~/attack-engine1/outputFiles/RobotsOutput.txt > FinalRapport.txt')
+	os.system('cat ~/attack-engine1/outputFiles/sqlinjectionRepport.txt > FinalRapport.txt')
+	os.system('cat ~/attack-engine1/outputFiles/xssinjectionRepport.txt > FinalRapport.txt')
+
+	choice=raw_input("if you want to read the final report  type [Y/n] ?")
+	if choice=="Y" or choice =="y" or choice=="yes" :
+		os.system('sudo gedit ~/attack-engine1/outputFiles/FinalRapport.txt')
+	else :
+		print 'thank you for using our app '
+	return 0
+

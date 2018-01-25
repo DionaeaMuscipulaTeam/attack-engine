@@ -1,0 +1,14 @@
+#!/usr/bin/python
+import os
+
+
+
+def genrateReport():
+	os.system('cat ~/attack-engine1/outputFiles/* > FinalRapport.txt')
+	choice=raw_input("if you want to read the final report  type [Y/n] ?")
+	if choice=="Y" or choice =="y" or choice=="yes" :
+		os.system('sudo gedit ~/attack-engine1/outputFiles/FinalRapport.txt')
+	else
+		os.system('thank you for using our app ')
+	return 0
+

@@ -1,0 +1,49 @@
+#!/usr/bin/python
+from bs4 import BeautifulSoup
+from subprocess import call
+import subprocess
+import requests
+import os
+
+
+def constructLink(url):
+	with open("bypassLib.txt","r") as f:
+		res =url + '\n'
+		flist = f.read().splitlines() 
+   		for line in flist:
+   		 	print str(line)
+			link=str(url)+str(line)+"/"
+			print "testing : ",link
+			r = requests.head(link)
+			code = r.status_code
+			if (os.path.exists('~/attack-engine1/outputFiles/bypassRepport.txt') == False ):
+				os.system('touch ~/attack-engine1/outputFiles/bypassRepport.txt')
+			path = os.path.join(os.path.expanduser('~'), 'attack-engine1', 'outputFiles', 'bypassRepport.txt')
+			panel=''
+			print code 
+			if code == 404 :
+				res+="There is no panel admin named"+line
+			else :
+				res+=line
+				print "the Resource founded is \n"
+				print line
+				panel=res
+			with open(path, "w") as text_file:
+				text_file.write("%s" % res)
+
+	return panel
+
+
+def getRobotsContents(url):
+	r  = requests.get(url+"/robots.txt")
+	print r
+	data = r.text
+	soup = BeautifulSoup(data,"lxml")
+	request=str(soup)
+	print request
+	if (os.path.exists("~/attack-engine1/outputFiles/RobotsOutput.txt")=='False') :
+		subprocess.call("touch ~/attack-engine1/outputFiles/RobotsOutput.txt", shell=True)
+	path = os.path.join(os.path.expanduser('~'), 'attack-engine1', 'outputFiles', 'RobotsOutput.txt')
+	with open(path, "w") as text_file:
+		text_file.write("%s" % request)
+	return 0

@@ -25,4 +25,4 @@ attack-engine will :
 
 # Contributors
 
-We would like to take this opportunity to extend special thanks to  Mr Mhamed Chammem and Mr Mohamed Hamdi for his contribution and help .
+We would like to take this opportunity to extend special thanks to  Mr Mhamed Chammem and Mr Mohamed Hamdi for their contributions and help .

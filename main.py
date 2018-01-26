@@ -9,8 +9,6 @@ except :
 
 
 try :
-	# import controller
-	os.system("touch rapport.txt") 
-	os.system("python controller.py | tee rapport.txt ")
+	import controller
 except :
 	print "there is a problem in controller "

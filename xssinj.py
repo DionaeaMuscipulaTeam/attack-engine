@@ -13,14 +13,20 @@ def XSSInject(url):
 	print url
 	i = 0
 	destination = ""
+	NamePassword= ""
+	NameUser = ""
 	NameHidden=""
+	NameSubmit=""
 	ValueHidden=""
+	ValueSubmit=""
 	from detectinput import DetectFormInput
 	names,types,values,destination,method = DetectFormInput(url)
 	for typee in types :
 		
 		if typee != "password" and typee != "submit":		
-			NameUser = names[i]				
+			NameUser = names[i]
+		if typee == "password":
+			NamePassword = names[i]				
 		elif typee == "submit" :
 			NameSubmit = names[i]
 			ValueSubmit = values[i]
@@ -34,8 +40,8 @@ def XSSInject(url):
 	else :
 		DestinationUrl = url+"/"+destination  
 	post_params_test = {
-			NameUser : "for-test",
-		#	NamePassword : "for-test",
+			NameUser : "for@test.com",
+			NamePassword : "for-test",
 			NameSubmit : ValueSubmit,
 			NameHidden : ValueHidden
 			}
@@ -48,12 +54,12 @@ def XSSInject(url):
 		os.system('touch ~/attack-engine1/outputFiles/xssinjectionRepport.txt')
 	path = os.path.join(os.path.expanduser('~'), 'attack-engine1', 'outputFiles', 'xssinjectionRepport.txt')
 	with open("xssword.txt","r") as f:
-		j = 1
+		#j = 1
 		Res=''
 		for line in f:
 			post_params = {
-			NameUser : line,
-		#	NamePassword : line,
+			NameUser : "for@test.com",
+			NamePassword : line,
 			NameSubmit : ValueSubmit,
 			NameHidden : ValueHidden
 			}
@@ -73,17 +79,16 @@ def XSSInject(url):
 				sqlInjected.append(line)
 				Res+='\n'
 				Res+=injectedResult
-			j = j+1
+			#j = j+1
 
 	with open(path, "w") as text_file:
 		text_file.write("%s" % time)
 		text_file.write("\n")
-		text_file.write("%s" % Res)
+		#text_file.write("%s" % Res)
 		time = str(datetime.now())
 		text_file.write("\n")
 		text_file.write("%s" % time)
 		print "\n"+time
 	return sqlInjected
-
 
 

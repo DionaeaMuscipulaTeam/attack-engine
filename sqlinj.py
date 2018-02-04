@@ -15,14 +15,30 @@ def SqlInject(url):
 	print time + "\n"	
 	i = 0
 	destination = ""
+	NamePassword= ""
+	NameUser = ""
 	NameHidden=""
+	NameSubmit=""
 	ValueHidden=""
+	ValueSubmit=""
 	from detectinput import DetectFormInput
 	names,types,values,destination,method = DetectFormInput(url)
+	print "\nnames\n" 
+	print names
+	print "\ntypes\n"
+	print types
+	print "\nvalues\n"
+	print values
+	print "\ndestination\n"
+	print destination
+	print "\nmethod\n" 
+	print method 
 	for typee in types :
 		
-		if typee != "password" and typee != "submit":		
-			NameUser = names[i]				
+		if typee != "password" and typee != "submit" and typee == "hidden":		
+			NameUser = names[i]
+		if typee == "password":
+			NamePassword = names[i]
 		elif typee == "submit" :
 			NameSubmit = names[i]
 			ValueSubmit = values[i]
@@ -36,8 +52,8 @@ def SqlInject(url):
 	else :
 		DestinationUrl = url+"/"+destination  
 	post_params_test = {
-			NameUser : "for-test",
-		#	NamePassword : "for-test",
+			NameUser : "for@test.com",
+			NamePassword : "for-test",
 			NameSubmit : ValueSubmit,
 			NameHidden : ValueHidden
 			}
@@ -50,7 +66,7 @@ def SqlInject(url):
 		os.system('touch ~/attack-engine1/outputFiles/sqlinjectionRepport.txt')
 	path = os.path.join(os.path.expanduser('~'), 'attack-engine1', 'outputFiles', 'sqlinjectionRepport.txt')
 	with open("sqlword.txt","r") as f:
-		j = 1
+		#j = 1
 		Res='the domaine is '+url+'\n'
 		for line in f:
 			post_params = {
@@ -74,15 +90,21 @@ def SqlInject(url):
 				sqlInjected.append(line)
 				Res+='\n'
 				Res+=injectedResult				
-			j = j+1
+			#j = j+1
 	with open(path, "w") as text_file:
 		text_file.write("%s" % time)
 		text_file.write("\n")
-		text_file.write("%s" % request)
+		#text_file.write("%s" % res)
 		time = str(datetime.now())
 		text_file.write("\n")
 		text_file.write("%s" % time)
 		print "\n"+time
 	return sqlInjected
-
-
+"""
+import itertools
+with open('a') as f:
+    for line1,line2 in itertools.izip_longest(*[f]*2):
+        print(line1,line2)
+"""
+url = raw_input("url ! : ")
+SqlInject(url)

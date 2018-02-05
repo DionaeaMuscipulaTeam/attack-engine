@@ -45,7 +45,7 @@ def LoginSearch(url):
 	return panel
 
 def ResourceSearch(url):
-	time = str(time.now())
+	time = str(datetime.now())
 	print time+"\n"
 	panel=''
 	with open("ResourcesLib.txt","r") as f:

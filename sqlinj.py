@@ -23,15 +23,15 @@ def SqlInject(url):
 	ValueSubmit=""
 	from detectinput import DetectFormInput
 	names,types,values,destination,method = DetectFormInput(url)
-	print "\nnames\n" 
+	print "\ninput names\n" 
 	print names
-	print "\ntypes\n"
+	print "\ninpt types\n"
 	print types
 	print "\nvalues\n"
 	print values
-	print "\ndestination\n"
+	print "\nform destination\n"
 	print destination
-	print "\nmethod\n" 
+	print "\nform method\n" 
 	print method 
 	for typee in types :
 		
@@ -100,11 +100,3 @@ def SqlInject(url):
 		text_file.write("%s" % time)
 		print "\n"+time
 	return sqlInjected
-"""
-import itertools
-with open('a') as f:
-    for line1,line2 in itertools.izip_longest(*[f]*2):
-        print(line1,line2)
-"""
-url = raw_input("url ! : ")
-SqlInject(url)
